@@ -13,13 +13,13 @@ import {
   StackDivider,
   useToast
 } from "@chakra-ui/react";
-import { SunIcon, CheckIcon, DeleteIcon } from "@chakra-ui/icons";
+import { SunIcon, MoonIcon, CheckIcon, DeleteIcon } from "@chakra-ui/icons";
 import Todo from "../types/TypeTodo";
 
 export default function MainApp() {
 
   const toast = useToast();  
-  const { toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   let [todos, setTodos] = useState<Todo[]>([]);
   let [todoInput, setTodoInput] = useState("");
 
@@ -67,7 +67,7 @@ export default function MainApp() {
       <VStack margin={4}>
         {/* Dark/Light Mode Bar */}
         <Button alignSelf={"flex-end"} onClick={toggleColorMode}>
-          <SunIcon w={6} h={6} />
+            {colorMode === "light" ? <MoonIcon w={6} h={6} /> : <SunIcon w={6} h={6} />}
         </Button>
 
         {/* ToDo App Heading */}
